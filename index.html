@@ -6,61 +6,103 @@
   <title>Umbrella Corporation</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #eee;
+      background-color: #000;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
+
     header {
-      background-color: #c00;
+      background-color: #111;
       padding: 20px;
       text-align: center;
+      border-bottom: 2px solid #0f0;
     }
+
     header h1 {
       margin: 0;
       font-size: 2.5em;
+      text-shadow: 0 0 10px #0f0;
     }
+
+    .scanline {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, #0f0 50%, transparent 50%);
+      background-size: 4px 100%;
+      animation: scan 1s infinite linear;
+    }
+
+    @keyframes scan {
+      from { background-position: 0 0; }
+      to { background-position: 100% 0; }
+    }
+
     section {
       padding: 20px;
     }
-    .logo {
-      display: block;
-      margin: 0 auto;
-      width: 150px;
+
+    h2 {
+      color: #0f0;
+      text-shadow: 0 0 5px #0f0;
     }
+
+    ul {
+      list-style-type: square;
+    }
+
     footer {
-      background-color: #222;
+      background-color: #111;
       text-align: center;
       padding: 10px;
+      border-top: 2px solid #0f0;
       font-size: 0.9em;
+    }
+
+    .terminal {
+      background-color: #000;
+      border: 1px solid #0f0;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 0.95em;
+    }
+
+    .terminal::before {
+      content: "root@umbrella:~$ ";
+      color: #0f0;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Umbrella Corporation</h1>
-    <img src="https://upload.wikimedia.org/wikipedia/en/e/e0/Umbrella_Corporation_logo.svg" alt="Umbrella Logo" class="logo" />
+    <div class="scanline"></div>
   </header>
 
   <section>
-    <h2>¿Quiénes somos?</h2>
-    <p>Umbrella Corporation es una empresa ficticia del universo de Resident Evil, conocida por su investigación en biotecnología, farmacéutica y desarrollo de armas biológicas. Aunque públicamente se presenta como una compañía médica, en secreto desarrolla virus como el T-Virus que desencadenan desastres biológicos.</p>
+    <h2>Acceso restringido</h2>
+    <div class="terminal">
+      Iniciando protocolo de seguridad...<br>
+      Cargando archivos confidenciales...<br>
+      Estableciendo conexión con servidor central...<br>
+      <span style="color: red;">Advertencia: actividad biológica detectada</span>
+    </div>
 
-    <h2>Áreas de investigación</h2>
+    <h2>Información clasificada</h2>
+    <p>Umbrella Corporation es una entidad encubierta especializada en investigación genética, desarrollo de armas biológicas y manipulación viral. Su fachada farmacéutica oculta operaciones que comprometen la seguridad global.</p>
+
     <ul>
-      <li>Biotecnología avanzada</li>
-      <li>Farmacéutica</li>
-      <li>Ingeniería genética</li>
-      <li>Armas biológicas</li>
+      <li>Proyecto T-Virus</li>
+      <li>Laboratorios subterráneos</li>
+      <li>IA de contención: Red Queen</li>
+      <li>Operaciones encubiertas en Raccoon City</li>
     </ul>
-
-    <h2>Legado</h2>
-    <p>La historia de Umbrella está marcada por controversias, experimentos secretos y una influencia global que ha dejado huella en la ficción de horror y ciencia ficción.</p>
   </section>
 
   <footer>
-    <p>© 2025 Umbrella Corporation — Proyecto ficticio para GitHub Pages</p>
+    <p>© 2025 Umbrella Corporation — Sistema monitorizado</p>
   </footer>
 </body>
 </html>
