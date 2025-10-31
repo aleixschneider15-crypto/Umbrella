@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Umbrella Corporation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Umbrella Corporation - Acceso</title>
   <style>
     body {
       background-color: #000;
@@ -11,54 +11,43 @@
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
     }
 
-    header {
-      background-color: #111;
-      padding: 20px;
+    .login-screen, .main-content {
+      display: none;
+      padding: 40px;
       text-align: center;
-      border-bottom: 2px solid #0f0;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
+    .login-screen.active {
+      display: block;
+    }
+
+    .main-content.active {
+      display: block;
+    }
+
+    h1 {
       text-shadow: 0 0 10px #0f0;
     }
 
-    .scanline {
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(to right, #0f0 50%, transparent 50%);
-      background-size: 4px 100%;
-      animation: scan 1s infinite linear;
-    }
-
-    @keyframes scan {
-      from { background-position: 0 0; }
-      to { background-position: 100% 0; }
-    }
-
-    section {
-      padding: 20px;
-    }
-
-    h2 {
+    input {
+      background-color: #000;
       color: #0f0;
-      text-shadow: 0 0 5px #0f0;
-    }
-
-    ul {
-      list-style-type: square;
-    }
-
-    footer {
-      background-color: #111;
-      text-align: center;
+      border: 1px solid #0f0;
       padding: 10px;
-      border-top: 2px solid #0f0;
-      font-size: 0.9em;
+      margin: 10px;
+      width: 250px;
+      font-family: inherit;
+    }
+
+    button {
+      background-color: #000;
+      color: #0f0;
+      border: 1px solid #0f0;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .terminal {
@@ -66,7 +55,7 @@
       border: 1px solid #0f0;
       padding: 15px;
       margin-top: 20px;
-      font-size: 0.95em;
+      text-align: left;
     }
 
     .terminal::before {
@@ -76,33 +65,44 @@
   </style>
 </head>
 <body>
-  <header>
+
+  <div class="login-screen active" id="login">
     <h1>Umbrella Corporation</h1>
-    <div class="scanline"></div>
-  </header>
+    <p>Acceso restringido. Ingrese sus credenciales.</p>
+    <input type="text" id="username" placeholder="Usuario" /><br />
+    <input type="password" id="password" placeholder="Contraseña" /><br />
+    <button onclick="login()">Iniciar sesión</button>
+    <p id="error" style="color: red; display: none;">Acceso denegado. Intente de nuevo.</p>
+  </div>
 
-  <section>
-    <h2>Acceso restringido</h2>
+  <div class="main-content" id="portal">
+    <h1>Bienvenido al Portal Interno</h1>
     <div class="terminal">
-      Iniciando protocolo de seguridad...<br>
+      Acceso concedido.<br>
       Cargando archivos confidenciales...<br>
-      Estableciendo conexión con servidor central...<br>
-      <span style="color: red;">Advertencia: actividad biológica detectada</span>
+      Sistema Umbrella activado.
     </div>
+    <p>Clasificación: <strong>ULTRA SECRETO</strong></p>
+    <p>Zona segura establecida. Monitoreo activo.</p>
+  </div>
 
-    <h2>Información clasificada</h2>
-    <p>Umbrella Corporation es una entidad encubierta especializada en investigación genética, desarrollo de armas biológicas y manipulación viral. Su fachada farmacéutica oculta operaciones que comprometen la seguridad global.</p>
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      const loginScreen = document.getElementById('login');
+      const portal = document.getElementById('portal');
+      const error = document.getElementById('error');
 
-    <ul>
-      <li>Proyecto T-Virus</li>
-      <li>Laboratorios subterráneos</li>
-      <li>IA de contención: Red Queen</li>
-      <li>Operaciones encubiertas en Raccoon City</li>
-    </ul>
-  </section>
+      // Simulación de autenticación
+      if (user === 'admin' && pass === 'umbrella') {
+        loginScreen.classList.remove('active');
+        portal.classList.add('active');
+      } else {
+        error.style.display = 'block';
+      }
+    }
+  </script>
 
-  <footer>
-    <p>© 2025 Umbrella Corporation — Sistema monitorizado</p>
-  </footer>
 </body>
 </html>
